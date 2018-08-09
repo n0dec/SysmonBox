@@ -7,10 +7,10 @@ The first thing we need for running our samples and PoCs into Sysmon sandbox is 
 
 Download the VM selecting the version that you want (`Windows 7`, `Windows 10`) and the corresponding platform.
 
-![download](https://camo.githubusercontent.com/20c98473bbd714224a4c5c42084799b0f76ea147/68747470733a2f2f692e696d6775722e636f6d2f596c56387a624c2e706e67)
+![download](https://camo.githubusercontent.com/f25bbb9cf036d9b7c53417328a6a057b56489e16/68747470733a2f2f692e696d6775722e636f6d2f5539633246585a2e706e67)
 
 Download the `zip` file and extract it, now we should have the `ova` file. We can import it with VirtualBox `File -> Import Appliance`. 
 
 Adjust some settings like Name and RAM then click `Import` to finish.
 
-![Import](https://camo.githubusercontent.com/e2c251be29d12d14d6bb14d12bdfcd16022709ff/68747470733a2f2f692e696d6775722e636f6d2f4e436c703232462e706e67)
+![Import](https://camo.githubusercontent.com/9dc8b720751ed0f71ae381685178f8ca9a5a61bc/68747470733a2f2f692e696d6775722e636f6d2f4546564b4d48752e706e67)
