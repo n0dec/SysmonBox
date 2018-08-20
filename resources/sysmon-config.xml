@@ -13,6 +13,7 @@
 		<NetworkConnect onmatch="exclude">
 			<Image condition="is">System</Image>
 			<User condition="is">NT AUTHORITY\NETWORK SERVICE</User>
+			<User condition="is">NT AUTHORITY\LOCAL SERVICE</User>
 		</NetworkConnect>
 
 		<ProcessTerminate onmatch="include">
@@ -35,21 +36,31 @@
 			<TargetImage condition="is">C:\Windows\System32\VBoxService.exe</TargetImage>
 		</CreateRemoteThread>
 
-		<RawAccessRead onmatch="exclude">
+		<RawAccessRead onmatch="include">
 		</RawAccessRead>
 
 		<ProcessAccess onmatch="exclude">
 			<SourceImage condition="begin with">C:\Windows\System32\</SourceImage>
+			<SourceImage condition="is">C:\Windows\explorer.exe</SourceImage>
 		</ProcessAccess>
 
 		<FileCreate onmatch="exclude">
 			<Image condition="is">C:\Windows\System32\VBoxService.exe</Image>
+			<TargetFilename condition="begin with">C:\Windows\System32\</TargetFilename>
+			<TargetFilename condition="begin with">C:\Windows\Microsoft.NET\</TargetFilename>
 		</FileCreate>
 
 		<RegistryEvent onmatch="exclude">
 			<Image condition="is">System</Image>
 			<Image condition="is">C:\Windows\Sysmon.exe</Image>
 			<TargetObject condition="is">HKLM\SOFTWARE</TargetObject>
+			<TargetObject condition="is">HKCR</TargetObject>
+			<TargetObject condition="contains">\Microsoft\SystemCertificates\</TargetObject>
+			<TargetObject condition="contains">\Microsoft\EnterpriseCertificates\</TargetObject>
+			<TargetObject condition="contains">\Windows NT\CurrentVersion\ProfileList\</TargetObject>
+			<TargetObject condition="contains">\Microsoft\Windows\CurrentVersion\Internet Settings\ZoneMap</TargetObject>
+			<TargetObject condition="begin with">HKLM\SOFTWARE\Microsoft\Windows Search\</TargetObject>
+			<TargetObject condition="begin with">\REGISTRY\A\</TargetObject>
 		</RegistryEvent>
 
 		<FileCreateStreamHash onmatch="exclude">
@@ -57,6 +68,9 @@
 
 		<PipeEvent onmatch="exclude">
 			<Image condition="is">C:\Windows\System32\VBoxService.exe</Image>
+			<PipeName condition="is">\srvsvc</PipeName>
+			<PipeName condition="is">\wkssvc</PipeName>
+			<PipeName condition="is">\lsass</PipeName>
 		</PipeEvent>
 
 		<WmiEvent onmatch="exclude">
