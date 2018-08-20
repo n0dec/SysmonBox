@@ -4,12 +4,15 @@
 		<ProcessCreate onmatch="exclude">
 			<Image condition="is">C:\Windows\System32\VBoxService.exe</Image>
 			<ParentImage condition="is">C:\Windows\System32\VBoxService.exe</ParentImage>
+			<ParentImage condition="is">C:\Windows\System32\csrss.exe</ParentImage>
 		</ProcessCreate>
 
 		<FileCreateTime onmatch="exclude">
 		</FileCreateTime>
 
 		<NetworkConnect onmatch="exclude">
+			<Image condition="is">System</Image>
+			<User condition="is">NT AUTHORITY\NETWORK SERVICE</User>
 		</NetworkConnect>
 
 		<ProcessTerminate onmatch="include">
@@ -29,6 +32,7 @@
 		</ImageLoad>
 
 		<CreateRemoteThread onmatch="exclude">
+			<TargetImage condition="is">C:\Windows\System32\VBoxService.exe</TargetImage>
 		</CreateRemoteThread>
 
 		<RawAccessRead onmatch="exclude">
@@ -39,9 +43,11 @@
 		</ProcessAccess>
 
 		<FileCreate onmatch="exclude">
+			<Image condition="is">C:\Windows\System32\VBoxService.exe</Image>
 		</FileCreate>
 
 		<RegistryEvent onmatch="exclude">
+			<Image condition="is">System</Image>
 			<Image condition="is">C:\Windows\Sysmon.exe</Image>
 			<TargetObject condition="is">HKLM\SOFTWARE</TargetObject>
 		</RegistryEvent>
