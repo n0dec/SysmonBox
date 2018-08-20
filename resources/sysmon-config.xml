@@ -1,0 +1,60 @@
+<Sysmon schemaversion="4.00">
+	<HashAlgorithms>md5,sha1,sha256</HashAlgorithms>
+	<EventFiltering>
+		<ProcessCreate onmatch="exclude">
+			<Image condition="is">C:\Windows\System32\VBoxService.exe</Image>
+			<ParentImage condition="is">C:\Windows\System32\VBoxService.exe</ParentImage>
+		</ProcessCreate>
+
+		<FileCreateTime onmatch="exclude">
+		</FileCreateTime>
+
+		<NetworkConnect onmatch="exclude">
+		</NetworkConnect>
+
+		<ProcessTerminate onmatch="include">
+		</ProcessTerminate>
+
+		<DriverLoad onmatch="exclude">
+			<Signature condition="contains">Microsoft Windows</Signature>
+			<Signature condition="contains">Oracle Corporation</Signature>
+		</DriverLoad>
+
+		<ImageLoad onmatch="exclude">
+			<Image condition="is">C:\Windows\Sysmon.exe</Image>
+			<Image condition="is">C:\Windows\System32\VBoxService.exe</Image>
+			<ImageLoaded condition="is">C:\Windows\System32\VBoxService.exe</ImageLoaded>
+			<ImageLoaded condition="is">C:\Windows\System32\VBoxTray.exe</ImageLoaded>
+			<Signature condition="is">Microsoft Windows</Signature>
+		</ImageLoad>
+
+		<CreateRemoteThread onmatch="exclude">
+		</CreateRemoteThread>
+
+		<RawAccessRead onmatch="exclude">
+		</RawAccessRead>
+
+		<ProcessAccess onmatch="exclude">
+			<SourceImage condition="begin with">C:\Windows\System32\</SourceImage>
+		</ProcessAccess>
+
+		<FileCreate onmatch="exclude">
+		</FileCreate>
+
+		<RegistryEvent onmatch="exclude">
+			<Image condition="is">C:\Windows\Sysmon.exe</Image>
+			<TargetObject condition="is">HKLM\SOFTWARE</TargetObject>
+		</RegistryEvent>
+
+		<FileCreateStreamHash onmatch="exclude">
+		</FileCreateStreamHash>
+
+		<PipeEvent onmatch="exclude">
+			<Image condition="is">C:\Windows\System32\VBoxService.exe</Image>
+		</PipeEvent>
+
+		<WmiEvent onmatch="exclude">
+		</WmiEvent>
+
+	</EventFiltering>
+</Sysmon>
